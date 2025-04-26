@@ -52,6 +52,9 @@ const translations = {
       step: "Krok",
       failstack: "Failstack",
     },
+    footer: {
+      createdBy: "Autor: Badgier",
+    },
   },
   en: {
     title: "Failstack Calculator",
@@ -104,6 +107,9 @@ const translations = {
       progress: "Stacking Progress",
       step: "Step",
       failstack: "Failstack",
+    },
+    footer: {
+      createdBy: "Created by: Badgier",
     },
   },
 };

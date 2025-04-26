@@ -1,6 +1,6 @@
 // Zmienna przechowująca aktualny wykres
 let chart;
-let currentLanguage = "pl";
+let currentLanguage = "en";
 
 /**
  * Funkcja do zmiany motywu
@@ -76,6 +76,8 @@ function updateLanguage() {
     translations[currentLanguage].permanentEnchLabel;
   document.getElementById("permanentEnchDescription").textContent =
     translations[currentLanguage].permanentEnchDescription;
+  document.getElementById("footerCreatedBy").textContent =
+    translations[currentLanguage].footer.createdBy;
 
   // Aktualizuj legendę
   updateLegend();
