@@ -44,6 +44,10 @@ function updateLanguage() {
     translations[currentLanguage].title;
   document.getElementById("targetStackLabel").textContent =
     translations[currentLanguage].targetStackLabel;
+  document.getElementById("startStackLabel").textContent =
+    translations[currentLanguage].startStackLabel;
+  document.getElementById("startStackDescription").textContent =
+    translations[currentLanguage].startStackDescription;
   document.getElementById("useEventLabel").innerHTML =
     translations[currentLanguage].useEventLabel;
   document.getElementById("useSmartEventLabel").textContent =
@@ -126,6 +130,12 @@ function renderStepList(steps, useCompactNumbers) {
   const stepList = document.getElementById("stepList");
   stepList.innerHTML = "";
 
+  // Pobierz aktualne ceny Origin do porównania
+  const originPrice = parseFloat(document.getElementById("originPrice").value);
+  const faintPrice = parseFloat(document.getElementById("faintPrice").value);
+  // Granica cenowa między Origin a Faint (mniej więcej w połowie między ich cenami)
+  const priceBoundary = (originPrice + faintPrice) / 2;
+
   if (steps.length === 0) {
     stepList.innerHTML = `<p>${translations[currentLanguage].steps.noSteps}</p>`;
     return;
@@ -139,13 +149,19 @@ function renderStepList(steps, useCompactNumbers) {
       if (step.cost === 0 && step.increase > 0 && step.increase <= 6) {
         step.type = translations[currentLanguage].steps.eventOrigin;
       }
-      // Sprawdź, czy to krok z oryginalnym originem
-      else if (step.increase >= 13) {
+      // Sprawdź, czy to krok z oryginalnym originem (bazując na koszcie w porównaniu do cen)
+      else if (step.cost >= priceBoundary) {
         step.type = translations[currentLanguage].steps.origin;
       }
       // W przeciwnym razie to faint origin
-      else {
+      else if (step.cost > 0) {
         step.type = translations[currentLanguage].steps.faintOrigin;
+      }
+      // Dla pozostałych przypadków (np. początkowy stack)
+      else {
+        // Zachowaj istniejący typ lub ustaw domyślny
+        step.type =
+          step.type || translations[currentLanguage].steps.initialStack;
       }
     }
 
@@ -362,9 +378,19 @@ function saveUserSettings() {
   // Zapisanie wartości dla valksów i permanent enhancement
   localStorage.setItem("valksCry", document.getElementById("valksCry").value);
   localStorage.setItem("permEnch", document.getElementById("permEnch").value);
-  localStorage.setItem("targetStack", document.getElementById("targetStack").value);
+  localStorage.setItem(
+    "targetStack",
+    document.getElementById("targetStack").value
+  );
+  localStorage.setItem(
+    "startStack",
+    document.getElementById("startStack").value
+  );
   localStorage.setItem("useEvent", document.getElementById("useEvent").checked);
-  localStorage.setItem("useSmartEvent", document.getElementById("useSmartEvent").checked);
+  localStorage.setItem(
+    "useSmartEvent",
+    document.getElementById("useSmartEvent").checked
+  );
 }
 
 /**
@@ -413,22 +439,23 @@ function initApp() {
     document.getElementById("targetStack").value = savedTargetStack;
   }
 
-  // Wczytanie ustawienia Event Origins
-  const savedUseEvent = localStorage.getItem("useEvent");
-  if (savedUseEvent === "true") {
-    document.getElementById("useEvent").checked = true;
+  // Wczytanie zapisanego startowego stacka
+  const savedStartStack = localStorage.getItem("startStack");
+  if (savedStartStack !== null) {
+    document.getElementById("startStack").value = savedStartStack;
   }
 
   // Ustawienie domyślnych wartości
   document.getElementById("eventLimit").value = 20;
   document.getElementById("eventThreshold").value = 150;
-  
+
   // Domyślnie włącz Smart Event jeśli Event Origins są włączone
   if (document.getElementById("useEvent").checked) {
     // Wczytaj zapisaną wartość Smart Event, jeśli istnieje
     const savedUseSmartEvent = localStorage.getItem("useSmartEvent");
     if (savedUseSmartEvent !== null) {
-      document.getElementById("useSmartEvent").checked = savedUseSmartEvent === "true";
+      document.getElementById("useSmartEvent").checked =
+        savedUseSmartEvent === "true";
     } else {
       // Jeśli nie ma zapisanej wartości, domyślnie włącz
       document.getElementById("useSmartEvent").checked = true;
@@ -479,6 +506,12 @@ function initApp() {
 
   // Nasłuchiwanie zmian dla Target Stack
   document.getElementById("targetStack").addEventListener("change", () => {
+    saveUserSettings();
+    calculate();
+  });
+
+  // Nasłuchiwanie zmian dla Start Stack
+  document.getElementById("startStack").addEventListener("change", () => {
     saveUserSettings();
     calculate();
   });

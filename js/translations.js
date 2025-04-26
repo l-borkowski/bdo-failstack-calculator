@@ -3,6 +3,8 @@ const translations = {
   pl: {
     title: "Kalkulator Failstacków",
     targetStackLabel: "Docelowy Stack:",
+    startStackLabel: "Stack początkowy:",
+    startStackDescription: "Początkowa wartość stacka do kalkulacji",
     useEventLabel: "Użyj eventowych Originów",
     useSmartEventLabel: "Inteligentne wykorzystanie eventowych Originów",
     showAdvancedLabel: "Pokaż zaawansowane opcje",
@@ -35,6 +37,7 @@ const translations = {
       silver: "Silver",
       valksAdded: "Dodano Valk's Cry",
       permEnchAdded: "Family szansa na ulepszenie",
+      initialStack: "Stack początkowy",
       // Nowe skróty nazw - zachowujące pierwsze słowo
       originShort: "Origin",
       faintOriginShort: "Faint Origin",
@@ -53,6 +56,8 @@ const translations = {
   en: {
     title: "Failstack Calculator",
     targetStackLabel: "Target Stack:",
+    startStackLabel: "Starting Stack:",
+    startStackDescription: "Initial stack value for calculation",
     useEventLabel: "Use Event Origins",
     useSmartEventLabel: "Smart Event Origin Usage",
     showAdvancedLabel: "Show Advanced Options",
@@ -85,6 +90,7 @@ const translations = {
       silver: "Silver",
       valksAdded: "Added Valk's Cry",
       permEnchAdded: "Added Permanent Enhancement",
+      initialStack: "Starting Stack",
       // Nowe skróty nazw - zachowujące pierwsze słowo
       originShort: "Origin",
       faintOriginShort: "Faint Origin",

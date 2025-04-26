@@ -4,6 +4,7 @@
  */
 function calculate() {
   const targetInput = parseInt(document.getElementById("targetStack").value);
+  const startStack = parseInt(document.getElementById("startStack").value) || 0;
   const useEvent = document.getElementById("useEvent").checked;
   const useSmartEvent = document.getElementById("useSmartEvent").checked;
   const eventLimit = parseInt(document.getElementById("eventLimit").value);
@@ -21,7 +22,8 @@ function calculate() {
   const totalBonus = valksCry + permEnch;
   const effectiveTarget = Math.max(100, targetInput - totalBonus);
 
-  let current = 100;
+  // Zaczynamy od wartości startowego stacka lub 100, jeśli startowy stack jest mniejszy
+  let current = Math.max(startStack, 100);
   let eventLeft = eventLimit;
   let cost = 0;
   let eventUsed = 0;
@@ -29,6 +31,17 @@ function calculate() {
   let originUsed = 0;
   let progress = [current];
   let steps = [];
+
+  // Jeśli startStack jest większy niż 0 ale mniejszy niż 100, dodajemy informację o kroku
+  if (startStack > 0 && startStack < 100) {
+    steps.push({
+      startStack: startStack,
+      type: translations[currentLanguage].steps.initialStack,
+      increase: 100 - startStack,
+      endStack: 100,
+      cost: 0,
+    });
+  }
 
   while (current < effectiveTarget) {
     // Ile punktów brakuje do celu

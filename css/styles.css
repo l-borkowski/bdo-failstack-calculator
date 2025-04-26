@@ -26,13 +26,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 15px;
+    /* Zmniejszony padding z 30px na 15px */
     transition: background-color var(--transition-speed), color var(--transition-speed);
     margin: 0;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    /* Zmniejszony odstęp pod nagłówkiem */
     position: relative;
     transition: transform 0.3s ease;
 }
@@ -449,6 +451,38 @@ select {
 
 .step-legend strong {
     color: var(--accent-color);
+}
+
+.input-with-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-with-button input {
+    flex: 1;
+}
+
+.input-with-button button {
+    width: 30px;
+    height: 40px;
+    margin-top: 10px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 0;
+}
+
+/* Style dla pól Stack początkowy i Target Stack */
+#startStackLabel,
+#targetStackLabel {
+    margin-top: 20px;
+    display: block;
+}
+
+#startStackDescription {
+    margin-bottom: 20px;
+    display: block;
 }
 
 /* Scroll bar styling */
