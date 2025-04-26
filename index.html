@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Failstacków</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="header-options">
+        <button class="option-button" id="themeToggle">☀️</button>
+        <button class="option-button" id="langToggle">🌐</button>
+    </div>
+    <h1 id="title">Kalkulator Failstacków</h1>
+    <div class="container">
+        <div class="card main-card">
+            <label for="targetStack" id="targetStackLabel">Docelowy Stack:</label>
+            <input type="number" id="targetStack" min="101" max="299" value="140">
+
+            <div class="switch">
+                <input type="checkbox" id="useEvent">
+                <label for="useEvent"></label>
+                <span id="useEventLabel">Użyj eventowych Originów</span>
+            </div>
+
+            <div class="event-options" id="eventOptionsContainer" style="display: none;">
+                <label for="eventLimit" id="eventLimitLabel">Limit eventowych Originów:</label>
+                <input type="number" id="eventLimit" min="0" max="100" value="20">
+
+                <div class="switch">
+                    <input type="checkbox" id="useSmartEvent">
+                    <label for="useSmartEvent"></label>
+                    <span id="useSmartEventLabel">Inteligentne wykorzystanie eventowych Originów</span>
+                </div>
+            </div>
+
+            <div class="switch">
+                <input type="checkbox" id="showAdvanced">
+                <label for="showAdvanced"></label>
+                <span id="showAdvancedLabel">Pokaż zaawansowane opcje</span>
+            </div>
+
+            <div class="advanced-options" id="advancedOptions">
+                <h3 id="advancedOptionsTitle">Zaawansowane opcje</h3>
+
+                <label for="eventThreshold" id="eventThresholdLabel">Próg użycia eventowych Originów:</label>
+                <input type="number" id="eventThreshold" min="0" max="300" value="150">
+
+                <div class="input-group">
+                    <div>
+                        <label for="originPrice" id="originPriceLabel">Cena Origin of Dark Hunger:</label>
+                        <input type="number" id="originPrice" value="1000000000">
+                    </div>
+                    <div>
+                        <label for="faintPrice" id="faintPriceLabel">Cena Faint Origin of Dark Hunger:</label>
+                        <input type="number" id="faintPrice" value="500000000">
+                    </div>
+                </div>
+
+                <div class="switch">
+                    <input type="checkbox" id="useCompactNumbers" checked>
+                    <label for="useCompactNumbers"></label>
+                    <span id="useCompactNumbersLabel">Używaj kompaktowego formatu liczb</span>
+                </div>
+            </div>
+
+            <div class="enhancement-options">
+                <div class="enhancement-option">
+                    <label for="valksCry" id="valksCryLabel">Liczba użytych Valk's Cry:</label>
+                    <input type="number" id="valksCry" min="0" max="13" value="0">
+                    <small id="valksCryDescription">Dodaje +1 do końcowego stacka za każdą użytą Valk's Cry (max
+                        13)</small>
+                </div>
+
+                <div class="enhancement-option">
+                    <label for="permEnch" id="permanentEnchLabel">Bonus z ulepszenia stroju:</label>
+                    <select id="permEnch">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <small id="permanentEnchDescription">Dodatkowy bonus do failstacka z ulepszonego przedmiotu stroju
+                        (max 5)</small>
+                </div>
+            </div>
+
+            <div class="results" id="results"></div>
+
+            <div class="chart-container">
+                <canvas id="failstackChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card steps-card">
+            <!-- Legenda przeniesiona nad nagłówek -->
+            <div id="stepsLegend" class="step-legend"></div>
+            <h3 id="stepsListTitle">Lista kroków</h3>
+            <div class="step-list" id="stepList"></div>
+        </div>
+    </div>
+
+    <!-- Importy plików JavaScript -->
+    <script src="js/translations.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+// Tłumaczenia
+const translations = {
+  pl: {
+    title: "Kalkulator Failstacków",
+    targetStackLabel: "Docelowy Stack:",
+    useEventLabel: "Użyj eventowych Originów",
+    useSmartEventLabel: "Inteligentne wykorzystanie eventowych Originów",
+    showAdvancedLabel: "Pokaż zaawansowane opcje",
+    advancedOptionsTitle: "Zaawansowane opcje",
+    eventLimitLabel: "Limit eventowych Originów:",
+    eventThresholdLabel: "Próg użycia eventowych Originów:",
+    originPriceLabel: "Cena Origin of Dark Hunger:",
+    faintPriceLabel: "Cena Faint Origin of Dark Hunger:",
+    useCompactNumbersLabel: "Używaj kompaktowego formatu liczb",
+    valksCryLabel: "Liczba użytych Valk's Cry:",
+    valksCryDescription:
+      "Dodaje +1 do końcowego stacka za każdą użytą Valk's Cry (max 13)",
+    permanentEnchLabel: "Bonus z ulepszenia stroju:",
+    permanentEnchDescription: "Permanent enchancement chance (max 5)",
+    stepsListTitle: "Lista kroków",
+    results: {
+      results: "Wyniki:",
+      eventOriginUsed: "Użyte eventowe Origin:",
+      originUsed: "Użyte Origin of Dark Hunger:",
+      faintUsed: "Użyte Faint Origin of Dark Hunger:",
+      totalCost: "Całkowity koszt:",
+      silver: "Silver",
+      effectiveTarget: "Efektywny docelowy stack:",
+    },
+    steps: {
+      noSteps: "Brak kroków do wyświetlenia.",
+      eventOrigin: "Event Origin of Dark Hunger",
+      faintOrigin: "Faint Origin of Dark Hunger",
+      origin: "Origin of Dark Hunger",
+      silver: "Silver",
+      valksAdded: "Dodano Valk's Cry",
+      permEnchAdded: "Family szansa na ulepszenie",
+      // Nowe skróty nazw - zachowujące pierwsze słowo
+      originShort: "Origin",
+      faintOriginShort: "Faint Origin",
+      eventOriginShort: "Event Origin",
+      originLong: "Origin of Dark Hunger",
+      faintOriginLong: "Faint Origin of Dark Hunger",
+      eventOriginLong: "Event Origin of Dark Hunger",
+      legend: "Legenda:",
+    },
+    chart: {
+      progress: "Postęp Stackowania",
+      step: "Krok",
+      failstack: "Failstack",
+    },
+  },
+  en: {
+    title: "Failstack Calculator",
+    targetStackLabel: "Target Stack:",
+    useEventLabel: "Use Event Origins",
+    useSmartEventLabel: "Smart Event Origin Usage",
+    showAdvancedLabel: "Show Advanced Options",
+    advancedOptionsTitle: "Advanced Options",
+    eventLimitLabel: "Event Origins Limit:",
+    eventThresholdLabel: "Event Origins Usage Threshold:",
+    originPriceLabel: "Price of Origin of Dark Hunger:",
+    faintPriceLabel: "Price of Faint Origin of Dark Hunger:",
+    useCompactNumbersLabel: "Use compact number format",
+    valksCryLabel: "Number of Valk's Cry used:",
+    valksCryDescription:
+      "Adds +1 to final stack for each Valk's Cry used (max 13)",
+    permanentEnchLabel: "Permanent Enhancement Chance:",
+    permanentEnchDescription: "Permanent enchancement chance (max 5)",
+    stepsListTitle: "Steps List",
+    results: {
+      results: "Results:",
+      eventOriginUsed: "Event Origins used:",
+      originUsed: "Origins of Dark Hunger used:",
+      faintUsed: "Faint Origins of Dark Hunger used:",
+      totalCost: "Total cost:",
+      silver: "Silver",
+      effectiveTarget: "Effective target stack:",
+    },
+    steps: {
+      noSteps: "No steps to display.",
+      eventOrigin: "Event Origin of Dark Hunger",
+      faintOrigin: "Faint Origin of Dark Hunger",
+      origin: "Origin of Dark Hunger",
+      silver: "Silver",
+      valksAdded: "Added Valk's Cry",
+      permEnchAdded: "Added Permanent Enhancement",
+      // Nowe skróty nazw - zachowujące pierwsze słowo
+      originShort: "Origin",
+      faintOriginShort: "Faint Origin",
+      eventOriginShort: "Event Origin",
+      originLong: "Origin of Dark Hunger",
+      faintOriginLong: "Faint Origin of Dark Hunger",
+      eventOriginLong: "Event Origin of Dark Hunger",
+      legend: "Legend:",
+    },
+    chart: {
+      progress: "Stacking Progress",
+      step: "Step",
+      failstack: "Failstack",
+    },
+  },
+};
+
+// Export dla modułów JS
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { translations };
+}

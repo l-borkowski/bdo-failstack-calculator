@@ -1,0 +1,513 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --input-bg: #2a2a2a;
+    --accent-color: #4caf50;
+    --accent-hover: #45a049;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --transition-speed: 0.3s;
+}
+
+.light-theme {
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --input-bg: #e9e9e9;
+    --accent-color: #4caf50;
+    --accent-hover: #45a049;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-color);
+    transition: width 0.5s ease;
+}
+
+h1:hover::after {
+    width: 80%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    margin-bottom: 0;
+    box-sizing: border-box;
+    transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+input,
+button,
+select,
+label {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+input[type="number"] {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+input[type="number"]:focus,
+select:focus {
+    outline: 2px solid var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+button:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.switch input {
+    width: auto;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.switch label {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 25px;
+    background: var(--input-bg);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.switch label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.switch input:checked+label::after {
+    background: white;
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.switch input:checked+label {
+    background: var(--accent-color);
+}
+
+/* Animate the switch when toggled */
+.switch input:checked+label::after {
+    animation: toggle-on 0.3s ease-out;
+}
+
+@keyframes toggle-on {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.2);
+    }
+
+    100% {
+        transform: translateX(-100%) scale(1);
+    }
+}
+
+.results {
+    margin-top: 20px;
+    background: var(--input-bg);
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.results:hover {
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.chart-container {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chart-container:hover {
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.step-list {
+    margin-top: 10px;
+    padding: 5px;
+    background: var(--input-bg);
+    border-radius: 8px;
+    max-height: 600px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+.step-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.light-theme .step-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.step-item:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.step-item:last-child {
+    border-bottom: none;
+}
+
+.advanced-options {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.light-theme .advanced-options {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+.header-options {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.option-button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: all 0.2s ease;
+}
+
+.option-button:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.enhancement-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.enhancement-option {
+    flex: 1;
+    min-width: 200px;
+    transition: all 0.2s ease;
+}
+
+.enhancement-option:hover {
+    transform: translateY(-3px);
+}
+
+.enhancement-option label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.enhancement-option select,
+.enhancement-option input {
+    width: 100%;
+    margin-top: 5px;
+    transition: all 0.2s ease;
+}
+
+.enhancement-option small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.enhancement-option:hover small {
+    opacity: 1;
+}
+
+select {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    appearance: none;
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.light-theme select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23333333' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+}
+
+.event-options {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    border-left: 4px solid var(--accent-color);
+    box-shadow: inset 0 0 5px var(--shadow-color);
+    transition: all 0.3s ease;
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-options label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.event-options input[type="number"] {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.step-legend {
+    background: rgba(76, 175, 80, 0.1);
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.step-legend:hover {
+    background: rgba(76, 175, 80, 0.2);
+    transform: translateX(3px);
+}
+
+.step-legend p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+}
+
+.step-legend strong {
+    color: var(--accent-color);
+}
+
+/* Scroll bar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--input-bg);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+/* Pulse animation for the calculate button that can be added to trigger calculation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* Responsywny układ dla desktopów */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .main-card {
+        flex: 2;
+        min-width: 60%;
+    }
+
+    .steps-card {
+        flex: 1;
+        min-width: 30%;
+        height: fit-content;
+    }
+
+    .input-group {
+        flex-direction: row;
+    }
+
+    .chart-container {
+        height: 400px;
+    }
+}
