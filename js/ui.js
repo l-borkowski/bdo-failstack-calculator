@@ -66,6 +66,28 @@ function updateLanguage() {
     translations[currentLanguage].faintPriceLabel;
   document.getElementById("useCompactNumbersLabel").textContent =
     translations[currentLanguage].useCompactNumbersLabel;
+  document.getElementById("originPreferenceLabel").textContent =
+    translations[currentLanguage].originPreferenceLabel;
+  document.getElementById("originPreferenceDescription").textContent =
+    translations[currentLanguage].originPreferenceDescription;
+
+  // Aktualizacja opcji w selekcie preferencji Originów
+  const originPreferenceSelect = document.getElementById("originPreference");
+  const currentValue = originPreferenceSelect.value; // Zachowujemy aktualnie wybraną wartość
+  originPreferenceSelect.innerHTML = ""; // Czyścimy opcje
+
+  // Dodajemy nowe opcje z tłumaczeniami
+  const options = translations[currentLanguage].originPreferenceOptions;
+  for (const value in options) {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = options[value];
+    originPreferenceSelect.appendChild(option);
+  }
+
+  // Przywracamy wybraną wartość
+  originPreferenceSelect.value = currentValue;
+
   document.getElementById("stepsListTitle").textContent =
     translations[currentLanguage].stepsListTitle;
   document.getElementById("valksCryLabel").textContent =
@@ -393,6 +415,10 @@ function saveUserSettings() {
     "useSmartEvent",
     document.getElementById("useSmartEvent").checked
   );
+  localStorage.setItem(
+    "originPreference",
+    document.getElementById("originPreference").value
+  );
 }
 
 /**
@@ -445,6 +471,12 @@ function initApp() {
   const savedStartStack = localStorage.getItem("startStack");
   if (savedStartStack !== null) {
     document.getElementById("startStack").value = savedStartStack;
+  }
+
+  // Wczytanie zapisanej preferencji dla Originów
+  const savedOriginPreference = localStorage.getItem("originPreference");
+  if (savedOriginPreference !== null) {
+    document.getElementById("originPreference").value = savedOriginPreference;
   }
 
   // Ustawienie domyślnych wartości
@@ -514,6 +546,12 @@ function initApp() {
 
   // Nasłuchiwanie zmian dla Start Stack
   document.getElementById("startStack").addEventListener("change", () => {
+    saveUserSettings();
+    calculate();
+  });
+
+  // Nasłuchiwanie zmian dla preferencji Originów
+  document.getElementById("originPreference").addEventListener("change", () => {
     saveUserSettings();
     calculate();
   });

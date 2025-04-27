@@ -438,6 +438,60 @@ select {
     margin-bottom: 10px;
 }
 
+/* Styl dla elementu preferencji Originów */
+.origin-preference {
+    margin: 20px 0;
+    padding: 12px 15px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.origin-preference:hover {
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transform: translateX(2px);
+}
+
+.origin-preference label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.origin-preference select {
+    width: 100%;
+    margin-top: 0;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.origin-preference select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.origin-preference small {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    padding-left: 2px;
+    font-style: italic;
+    transition: opacity 0.2s ease;
+}
+
+.origin-preference:hover small {
+    opacity: 1;
+}
+
 .step-legend {
     background: rgba(76, 175, 80, 0.1);
     padding: 8px;

@@ -14,6 +14,15 @@ const translations = {
     originPriceLabel: "Cena Origin of Dark Hunger:",
     faintPriceLabel: "Cena Faint Origin of Dark Hunger:",
     useCompactNumbersLabel: "Używaj kompaktowego formatu liczb",
+    originPreferenceLabel: "Preferencja dla Originów:",
+    originPreferenceDescription:
+      "Wybierz preferencję w przypadku podobnych kosztów",
+    originPreferenceOptions: {
+      cheapest: "Najtańszy",
+      balanced: "Zbalansowany",
+      origin: "Preferuj Origin of Dark Hunger",
+      faint: "Preferuj Faint Origin of Dark Hunger",
+    },
     valksCryLabel: "Liczba użytych Valk's Cry:",
     valksCryDescription:
       "Dodaje +1 do końcowego stacka za każdą użytą Valk's Cry (max 13)",
@@ -70,6 +79,14 @@ const translations = {
     originPriceLabel: "Price of Origin of Dark Hunger:",
     faintPriceLabel: "Price of Faint Origin of Dark Hunger:",
     useCompactNumbersLabel: "Use compact number format",
+    originPreferenceLabel: "Origin Preference:",
+    originPreferenceDescription: "Choose preference when costs are similar",
+    originPreferenceOptions: {
+      cheapest: "Cheapest",
+      balanced: "Balanced",
+      origin: "Prefer Origin of Dark Hunger",
+      faint: "Prefer Faint Origin of Dark Hunger",
+    },
     valksCryLabel: "Number of Valk's Cry used:",
     valksCryDescription:
       "Adds +1 to final stack for each Valk's Cry used (max 13)",
