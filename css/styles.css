@@ -9,6 +9,50 @@
     --transition-speed: 0.3s;
 }
 
+/* Logo styles */
+.corner-bamboo {
+    position: fixed;
+    left: -65px;
+    top: 50%;
+    transform: translateY(-50%) rotate(15deg);
+    z-index: 5;
+    /* Wyższy z-index aby obrazek był nad tłem ale pod elementami interfejsu */
+    transition: all 0.5s ease;
+    pointer-events: auto;
+    /* Zapewniamy że zdarzenia myszy są obsługiwane */
+    cursor: pointer;
+    /* Pokazuje kursor wskazujący przy najechaniu */
+}
+
+#bambooLogo {
+    width: 180px;
+    height: 260px;
+    transition: all 0.5s ease;
+    /* Wydłużony czas przejścia dla płynności */
+    object-fit: contain;
+    border-radius: 0 10px 10px 0;
+    opacity: 0.85;
+    max-width: none;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+    transform: perspective(500px) rotateY(-15deg);
+}
+
+.corner-bamboo:hover #bambooLogo {
+    transform: perspective(500px) rotateY(-5deg) translateX(25px);
+    opacity: 1;
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+/* Zwiększamy z-index dla głównych komponentów UI, aby były ponad bambusem */
+.container,
+.card,
+.header-options,
+h1,
+.footer {
+    position: relative;
+    z-index: 10;
+}
+
 .light-theme {
     --bg-color: #f5f5f5;
     --card-bg: #ffffff;
